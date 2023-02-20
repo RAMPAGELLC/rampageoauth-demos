@@ -32,7 +32,7 @@ app.get("/authorize", (req, res) => {
 
     if (!target_roblox_key) return console.log("No key found");
 
-    const response = await fetch('https://api.rampagestudios.org/v1/oauth/request/index.php', {
+    const response = await fetch('https://id.rampage.place/oauth-api/redeem', {
         body: {
             key: target_roblox_key,
             platform: "roblox"
@@ -49,7 +49,7 @@ app.get("/authorize", (req, res) => {
 app.get("/login", (req, res) => {
     const scopesFormated = scopes.join(",");
     const returnURL = `localhost:${PORT}/authorize`;
-    const redirect = `https://id.rampagestudios.org/login/sso?scopes=${encodeURIComponent(scopesFormated)}&return_url=${encodeURIComponent(returnURL)}`;
+    const redirect = `https://id.rampage.place/oauth?scopes=${encodeURIComponent(scopesFormated)}&return_url=${encodeURIComponent(returnURL)}`;
     res.redirect(redirect);
 });
 
